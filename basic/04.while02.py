@@ -9,8 +9,8 @@ while True:
 4. 회원삭제
 5. 종료
 
-입력번호 : ''')
-    num = int(input()) #키보드로 입력바든 수를 num 할당
+입력번호 : ''', end = '')
+    num = int(input()) #키보드로 입력받은 수를 num 할당
 
     if num == 1:
         print('회원정보입력')   

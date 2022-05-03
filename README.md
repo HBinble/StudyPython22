@@ -26,6 +26,6 @@
         - 문자열 연산
         - 문자열 포맷팅
     - 흐름제어
-     - if
-     - for
-     - while
+        - if
+        - for
+        - while

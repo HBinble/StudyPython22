@@ -1,7 +1,8 @@
 # 주소록 프로그램 v1.0
 # 작성일 : 2022-05-04
-# 작성자 : 이한빈
-# 설  명 : 주소록
+# 작성자 : 이정빈
+# 설  명 : ?
+
 import os
 
 # 연락처 클래스
@@ -15,39 +16,38 @@ class Contact:
         self.addr = addr
 
     def __str__(self) -> str:
-        str_val = (f'이  름 : {self.name}\n'
+        str_val = (f'==============================\n'
+                   f'이  름 : {self.name}\n'
                    f'핸드폰 : {self.phone_num}\n'
                    f'이메일 : {self.e_mail}\n'
                    f'주  소 : {self.addr}\n'
-                   f'===============================')
+                   f'==============================\n')
         return str_val
-    
+
+# 실행 함수
 def run():
     lst_contact = [] # 빈 리스트 생성
-    # contact = Contact('홍길동', '010-0000-1111', 'hdg@naver.com', '서울')
-    # print(contact)
-    #set_contact()
     clearConsole()
 
     while True:
         sel_menu = get_menu()
         if sel_menu == 1:
             clearConsole()
-            contect = set_contact()
-            lst_contact.append(contect)
-            input('입력이 완료되었습니다.') # 아무값도 안받고 있는 엔터 대기
+            contact = set_contact()
+            lst_contact.append(contact)
+            input('입력이 완료되었습니다.') # 아무값도 받지않고 엔터대기
             clearConsole()
-        elif sel_menu == 2: #연락처 출력
+        elif sel_menu == 2:
             clearConsole()
             get_contact(lst_contact)
-            input('출력이 완료되었습니다.') # 엔터 대기
+            input('출력이 완료되었습니다.')
             clearConsole()
         elif sel_menu == 3:
             clearConsole()
-            name = input('삭제할 이름을 입력하세요 : ')
+            name = input('삭제할 이름을 입력하세요 = ')
             del_contact(lst_contact, name)
             input('삭제가 완료되었습니다.')
-            clearConsole()        
+            clearConsole()
         elif sel_menu == 4:
             break
         else:
@@ -55,17 +55,15 @@ def run():
            # print('잘못된 번호 입니다.')
            # print('다시 입력하세요.')
 
-# 주소록 입력함수
-def set_contact():
+# 주소록 입력 함수
+def set_contact() -> Contact:
     name, phone_num, e_mail, addr = \
-        input('정보입력(이름,핸드폰,이메일,주소(구분자 /)) >').split('/')
-    contact = Contact(name, phone_num, e_mail, addr)
+    input('정보입력(이름, 핸드폰, 이메일, 주소 (구분자 /) : ').split('/')
+    contact = Contact(name= name, phone_num= phone_num,
+                      e_mail= e_mail, addr= addr)
     return contact
-    # contact = Contact(phone_num=phone_num, e_mail=e_mail,
-    #                 name=name, addr=addr)
-    # print(contact)
 
-# 주소록 전체 출력
+# 주소록 출력 함수
 def get_contact(lst_contact):
     for contact in lst_contact:
         print(contact)
@@ -74,24 +72,30 @@ def get_contact(lst_contact):
 def del_contact(lst_contact, name):
     for i, contact in enumerate(lst_contact):
         if contact.name == name:
-            del lst_contact[i]      
+            del lst_contact[i]
 
+# 메뉴 입력 함수
 def get_menu():
-    str_menu = ('--주소록 프로그램 v.1.1--\n'
+    str_menu = ('========================\n'
+                '--주소록 프로그램 v1.1--\n'
+                '========================\n'
                 '1. 연락처 추가\n'
                 '2. 연락처 출력\n'
                 '3. 연락처 삭제\n'
-                '4. 종료\n')
+                '4. 종료\n'
+                '========================\n')
     print(str_menu)
-    menu = input('메뉴입력 : ')
+    menu = input('메뉴 입력 : ')
     return int(menu)
 
+# 콘솔 클리어 함수
 def clearConsole():
-    command = 'clear'  # mac, unix, linux 화면클리어 명령어
+    command = 'clear' # mac, unix, linux 화면 클리어 명령어
     if os.name in ('nt', 'dos'):
-        command = 'cls' # windows, dos 화면클리어 명령어
+        command = 'cls' #windows, dos 화면 클리어 명령어
     os.system(command)
 
-
-if __name__ == '__main__':
-        run()
+# 프로그램 시작
+if __name__ == '__main__': # 시작
+    print('주소록 프로그램 v1.1 실행')
+    run()

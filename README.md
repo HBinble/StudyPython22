@@ -69,3 +69,7 @@
 - folium 지도 표현
 - 추가학습내용(열거형, 객체지향 고급, 반복문, 스레드/멀티프로세스, MS.SQL, etc..)
 - 코딩테스트
+
+```python
+print('Hello Python!!')
+```
